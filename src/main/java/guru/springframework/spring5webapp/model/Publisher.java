@@ -18,20 +18,12 @@ public class Publisher {
     private Long id;
 
     private String name;
-    private String addressLine;
+    private String addressLine1;
     private String city;
     private String state;
     private String zip;
 
     public Publisher() {
-    }
-
-    public Publisher(String name, String addressLine, String city, String state, String zip) {
-        this.name = name;
-        this.addressLine = addressLine;
-        this.city = city;
-        this.state = state;
-        this.zip = zip;
     }
 
     public Long getId() {
@@ -50,12 +42,12 @@ public class Publisher {
         this.name = name;
     }
 
-    public String getAddressLine() {
-        return addressLine;
+    public String getAddressLine1() {
+        return addressLine1;
     }
 
-    public void setAddressLine(String addressLine) {
-        this.addressLine = addressLine;
+    public void setAddressLine1(String addressLine) {
+        this.addressLine1 = addressLine;
     }
 
     public String getCity() {
@@ -87,7 +79,7 @@ public class Publisher {
         return "Publisher{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", addressLine='" + addressLine + '\'' +
+                ", addressLine='" + addressLine1 + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", zip='" + zip + '\'' +
