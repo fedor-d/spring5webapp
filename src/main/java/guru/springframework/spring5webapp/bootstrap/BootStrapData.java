@@ -29,6 +29,7 @@ public class BootStrapData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        System.out.println("Started in Bootstrap");
 
         Publisher wrox = new Publisher();
         wrox.setName("Wrox");
@@ -39,24 +40,33 @@ public class BootStrapData implements CommandLineRunner {
 
         publisherRepository.save(wrox);
 
+        System.out.println("Publisher Count: " + publisherRepository.count());
+
         Author eric = new Author("Eric", "Evans");
-        Book ddd = new Book("Domain Driving Design", "123-123-123");
+        Book ddd = new Book("Domain Driven Design", "123-123-123");
         eric.getBooks().add(ddd);
         ddd.getAuthors().add(eric);
 
+        ddd.setPublisher(wrox);
+        wrox.getBooks().add(ddd);
+
         authorRepository.save(eric);
         bookRepository.save(ddd);
+        publisherRepository.save(wrox);
 
         Author rod = new Author("Rod", "Johnson");
         Book noEJB = new Book("J2EE Development without EJB", "234-234-234");
         rod.getBooks().add(noEJB);
         noEJB.getAuthors().add(rod);
 
+        noEJB.setPublisher(wrox);
+        wrox.getBooks().add(noEJB);
+
         authorRepository.save(rod);
         bookRepository.save(noEJB);
+        publisherRepository.save(wrox);
 
-        System.out.println("Started in Bootstrap");
         System.out.println("Number of books: " + bookRepository.count());
-        System.out.println("Publisher wrox: " + publisherRepository.findAll());
+        System.out.println("Publisher Number of Books: " + wrox.getBooks().size());
     }
 }
